@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SessionsService} from "../../shared/services/sessions.service";
+import {Session} from "../../shared/models/session";
 
 @Component({
   selector: 'app-sessions',
@@ -6,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sessions.component.scss'],
 })
 export class SessionsComponent  implements OnInit {
+ sessions: Session[] = [];
 
-  constructor() { }
+  constructor( private _sessionsService: SessionsService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getDataSessions();
 
+  }
+  getDataSessions() {
+    this._sessionsService.getData().subscribe(dataSessions => {
+      this.sessions = Object.values(dataSessions);
+    });
+  }
 }

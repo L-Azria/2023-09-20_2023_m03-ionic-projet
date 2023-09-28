@@ -12,7 +12,7 @@ export class PresentateursComponent  implements OnInit {
 
   ngOnInit() {
     this._prensentateursService.getData().subscribe(data => {
-      console.log(data); // Faites quelque chose avec les données ici
+      console.log(data);
     });
   }
 
