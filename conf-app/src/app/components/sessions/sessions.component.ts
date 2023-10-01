@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SessionsService} from "../../shared/services/sessions.service";
 import {Session} from "../../shared/models/session";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sessions',
@@ -10,7 +11,9 @@ import {Session} from "../../shared/models/session";
 export class SessionsComponent  implements OnInit {
  sessions: Session[] = [];
 
-  constructor( private _sessionsService: SessionsService) { }
+
+  constructor( private _sessionsService: SessionsService,
+               private _router: Router) { }
 
   ngOnInit() {
     this.getDataSessions();
@@ -21,4 +24,9 @@ export class SessionsComponent  implements OnInit {
       this.sessions = Object.values(dataSessions);
     });
   }
+
+  goToSessionDetail(id: number | undefined) {
+    this._router.navigate(['/sessions', id]);
+  }
+
 }

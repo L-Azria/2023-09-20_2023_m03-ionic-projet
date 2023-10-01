@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Session} from "../../shared/models/session";
 import {SessionsService} from "../../shared/services/sessions.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-session-detail',
@@ -8,18 +9,21 @@ import {SessionsService} from "../../shared/services/sessions.service";
   styleUrls: ['./sessions-detail.component.scss'],
 })
 export class SessionsDetailComponent implements OnInit {
-  sessions: Session[] = [];
+  session: Session = {};
+  imgUrl: string = "https://devfest2018.gdgnantes.com/";
 
-  constructor( private _sessionsService: SessionsService) { }
+  constructor( private _route: ActivatedRoute,
+               private _sessionsService: SessionsService) { }
 
   ngOnInit() {
-    this.getDataSessions();
+    const id = parseInt(<string>this._route.snapshot.paramMap.get('id'));
+
+    this._sessionsService.getData().subscribe(session => {
+      this.session = session[id];
+      console.log(this.session)
+    });
 
   }
-  getDataSessions() {
-    this._sessionsService.getData().subscribe(dataSessions => {
-      this.sessions = Object.values(dataSessions);
-    });
-  }
+
 
 }

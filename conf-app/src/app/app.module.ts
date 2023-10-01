@@ -14,9 +14,10 @@ import {SessionsComponent} from "./components/sessions/sessions.component";
 import {registerLocaleData} from "@angular/common";
 import * as fr from '@angular/common/locales/fr';
 import {HomePageModule} from "./home/home.module";
+import {SessionsDetailComponent} from "./components/session-detail/sessions-detail.component";
 
 @NgModule({
-  declarations: [AppComponent, PresentateursComponent, SessionsComponent],
+  declarations: [AppComponent, PresentateursComponent, SessionsComponent, SessionsDetailComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, HomePageModule],
   providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, { provide: LOCALE_ID, useValue: 'fr-FR'}],
   bootstrap: [AppComponent],

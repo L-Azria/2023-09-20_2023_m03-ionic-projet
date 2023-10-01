@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ session?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>{{session.title}}</ion-card-title>
+      <img *ngIf="session.image" src="{{imgUrl + session.image}}">
+      <p *ngIf="session.type">Type : {{session.type}}</p>
+      <p *ngIf="session.titleMobile"> {{session.titleMobile}}</p>
+      <hr *ngIf="session.description">
+      <p *ngIf="session.description">Description de la session : </p>
+      <p *ngIf="session.description">{{ session.description }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

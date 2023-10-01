@@ -8,6 +8,7 @@ import {SessionsDetailComponent} from "../components/session-detail/sessions-det
 const routes: Routes = [
   {path: '', component: HomePage, children: []},
   {path:'sessions', component: SessionsComponent},
+  {path:'sessions/:id', component: SessionsDetailComponent},
   {path:'presentateurs', component: PresentateursComponent}
 ];
 
